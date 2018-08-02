@@ -21,7 +21,7 @@ if [ ! -f vagrant-ubuntu.ova ]; then
 fi
 
 vboxmanage import vagrant-ubuntu.ova -vsys 0 --cpus 4 --memory 8196 --vmname $MACHINE_NAME
-vboxmanage modifyvm $MACHINE_NAME --accelerate3d on
+vboxmanage modifyvm $MACHINE_NAME --accelerate3d off
 
 DISK_ID=$(vboxmanage showvminfo "$MACHINE_NAME" | grep -E '(SCSI|SATA).*UUID' | head -n 1 | sed 's/^.*UUID: \(.*\))/\1/')
 echo "Please create an entry for the disk encryption password in this project's password vault, and paste it below:"
